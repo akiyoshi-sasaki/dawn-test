@@ -44,4 +44,22 @@ class HomeController extends Controller
         }
 
     }
+
+    public function subscribe_cancel(Request $request)//キャンセル用
+    {
+        try {
+            Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            $id = Auth::id();//user_id取得
+            $user = User::find($id);
+//            すぐにキャンセル
+            $user->subscription('main')->cancelNow();
+
+            return 'Cancel successful';
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+
+    }
+
 }

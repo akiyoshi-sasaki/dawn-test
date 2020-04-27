@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/charge', 'ChargeController@charge');
 
 Route::post('/subscribe_process', 'HomeController@subscribe_process');
+
+Route::post('/subscribe_cancel', 'HomeController@subscribe_cancel');
